@@ -197,7 +197,6 @@ Modify candy nutritional information in:
 - **Camera access denied:** Allow camera permissions in browser
 - **Server connection failed:** Ensure `server.py` is running on port 8000
 - **Inaccurate detections:** Check image quality and lighting conditions
-- **CORS errors:** Make sure to access via `localhost`, not file://
 
 ---
 
