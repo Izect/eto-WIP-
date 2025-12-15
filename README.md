@@ -16,7 +16,10 @@ This application uses computer vision (YOLOv8) to detect specific brands of swee
 1.  **Clone the repository** (or download the script).
 2.  **Install dependencies:**
     ```bash
+    git lfs install
+    git lfs pull
     pip install -r requirements.txt
+    
     ```
     *Note: If using a Raspberry Pi Camera, ensure `picamera2` is installed on your system.*
 
