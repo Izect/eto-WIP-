@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e0f2fe 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.upload-area {
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 16px;
+}
+
+.upload-area:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.upload-area.dragover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.upload-text {
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+.upload-hint {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-camera {
+    background: #3b82f6;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.btn-camera:hover {
+    background: #2563eb;
+}
+
+.btn-analyze {
+    background: #8b5cf6;
+    color: white;
+    margin-top: 16px;
+}
+
+.btn-analyze:hover {
+    background: #7c3aed;
+}
+
+.btn-analyze:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+}
+
+.btn-capture {
+    background: #10b981;
+    color: white;
+}
+
+.btn-capture:hover {
+    background: #059669;
+}
+
+.btn-cancel {
+    background: #6b7280;
+    color: white;
+    margin-top: 8px;
+}
+
+.btn-cancel:hover {
+    background: #4b5563;
+}
+
+.preview-image,
+video {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+#resultCanvas {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 16px;
+    display: none;
+}
+
+#liveResultCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#liveVideoSection {
+    position: relative;
+}
+
+.error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 16px;
+    color: #991b1b;
+    display: flex;
+    align-items: start;
+    gap: 8px;
+}
+
+.results-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: #9ca3af;
+}
+
+.results-empty-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.candy-list {
+    margin-top: 16px;
+}
+
+.candy-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.candy-name {
+    font-weight: 600;
+}
+
+.candy-details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.candy-calories {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.candy-count {
+    background: #8b5cf6;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+}
+
+.spinner {
+    border: 3px solid #f3f4f6;
+    border-top: 3px solid #8b5cf6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}

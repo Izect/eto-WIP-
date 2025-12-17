@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <title>🍬 Candy Calorie Counter</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🍬 Candy Calorie Counter</h1>
+            <p class="subtitle">Upload or capture candy images for instant nutritional analysis</p>
+        </header>
+
+        <div class="grid">
+            <!-- Left Panel -->
+            <div class="card">
+                <h2>Image Input</h2>
+
+                <div id="uploadSection">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📤</div>
+                        <p class="upload-text"><strong>Click to upload</strong> or drag and drop</p>
+                        <p class="upload-hint">PNG, JPG or JPEG</p>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*">
+                    <button class="btn-camera" onclick="startCamera()">Capture Photo</button>
+                    <button class="btn-camera" onclick="startLiveVideo()" style="background: #10b981;">Live Video
+                        Analysis</button>
+                </div>
+
+                <div id="cameraSection" class="hidden">
+                    <video id="video" autoplay playsinline></video>
+                    <button class="btn-capture" onclick="captureImage()">📸 Capture</button>
+                    <button class="btn-cancel" onclick="stopCamera()">Cancel</button>
+                </div>
+
+                <div id="liveVideoSection" class="hidden">
+                    <div style="position: relative;">
+                        <video id="liveVideo" autoplay playsinline></video>
+                        <canvas id="liveResultCanvas"></canvas>
+                    </div>
+                    <canvas id="liveCanvas" style="display: none;"></canvas>
+                    <div style="margin-top: 16px; text-align: center;">
+                        <p style="color: #6b7280; margin-bottom: 8px;">Analyzing every 0.5 seconds...</p>
+                        <div style="display: flex; gap: 8px; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.875rem; color: #6b7280;">FPS:</span>
+                            <span id="fps" style="font-weight: bold; color: #8b5cf6;">0</span>
+                        </div>
+                    </div>
+                    <button class="btn-cancel" onclick="stopLiveVideo()">Stop Live Analysis</button>
+                </div>
+
+                <div id="previewSection" class="hidden">
+                    <img id="preview" class="preview-image" alt="Preview">
+                    <canvas id="resultCanvas"></canvas>
+                    <button class="btn-analyze" id="analyzeBtn" onclick="analyzeImage()">Analyze Image</button>
+                    <button class="btn-cancel" onclick="goBackToUpload()">Go Back</button>
+                </div>
+
+                <div id="loadingSection" class="hidden loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing image...</p>
+                </div>
+
+                <div id="errorSection" class="error hidden">
+                    <span>⚠️</span>
+                    <span id="errorText"></span>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="card">
+                <h2>Analysis Results</h2>
+                <div id="resultsEmpty" class="results-empty">
+                    <div class="results-empty-icon">📊</div>
+                    <p>Upload or capture an image to see results</p>
+                </div>
+
+                <div id="resultsContent" class="hidden">
+                    <div class="stats-grid">
+                        <div class="stat-card" style="background: #f3e8ff;">
+                            <div class="stat-label">Total Candies</div>
+                            <div class="stat-value" style="color: #7c3aed;" id="totalCount">0</div>
+                        </div>
+                        <div class="stat-card" style="background: #dcfce7;">
+                            <div class="stat-label">Calories</div>
+                            <div class="stat-value" style="color: #16a34a;" id="totalCalories">0</div>
+                        </div>
+                        <div class="stat-card" style="background: #dbeafe;">
+                            <div class="stat-label">Sugar (g)</div>
+                            <div class="stat-value" style="color: #2563eb;" id="totalSugar">0</div>
+                        </div>
+                        <div class="stat-card" id="riskCard">
+                            <div class="stat-label">Risk Level</div>
+                            <div class="stat-value" id="riskLevel">-</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 12px;">Detected Candies</h3>
+                    <div class="candy-list" id="candyList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" style="display: none;"></canvas>
+    <script src="static/js/script.js"></script>
+
+</body>
+
+</html>
