@@ -298,7 +298,8 @@ async function analyzeImage() {
 function processResults(detectionData, liveframe = 0) {
     const candyCounts = {};
     detectionData.detections.forEach(d => {
-        candyCounts[d.candy] = (candyCounts[d.candy] || 0) + 1;
+        const lookupKey = d.candy.replace(/ /g, '_');
+        candyCounts[lookupKey] = (candyCounts[lookupKey] || 0) + 1;
     });
 
     let totalCalories = 0;
@@ -348,8 +349,6 @@ function displayResults(results) {
     Object.entries(results.candyCounts).forEach(([candy, count]) => {
         const lookupKey = candy.replace(/ /g, '_');
         const nutrition = NUTRITION_INFO[lookupKey];
-        console.log(candy)
-        console.log(count)
 
         if (!nutrition) return;
 
